@@ -1,6 +1,6 @@
 {
   "name": "import-directories",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "recursively imports all files in a directory",
   "license": "MIT",
   "author": "iswilljr <iswilljr@gmail.com>",
@@ -23,5 +23,14 @@
   "devDependencies": {
     "ava": "4.3.3",
     "tsd": "0.23.0"
-  }
+  },
+  "types": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iswilljr/import-directories.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iswilljr/import-directories/issues"
+  },
+  "homepage": "https://github.com/iswilljr/import-directories#readme"
 }
