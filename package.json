@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava && tsd",
-    "prepublishOnly": "test"
+    "prepublishOnly": "yarn test"
   },
   "files": [
     "index.js",
