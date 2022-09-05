@@ -1,0 +1,27 @@
+{
+  "name": "import-directories",
+  "version": "0.0.1",
+  "description": "recursively imports all files in a directory",
+  "license": "MIT",
+  "author": "iswilljr <iswilljr@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava && tsd",
+    "prepublishOnly": "test"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "recursively",
+    "import",
+    "directory",
+    "files"
+  ],
+  "devDependencies": {
+    "ava": "4.3.3",
+    "tsd": "0.23.0"
+  }
+}
