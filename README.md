@@ -14,6 +14,8 @@ yarn add import-directories
 
 ## Usage
 
+### Import Directory
+
 ```js
 import { importDirectory } from "import-directories";
 
@@ -42,7 +44,7 @@ import { importDirectory } from "import-directories";
 const foo = await importDirectory("./foo", { keepPathOnKey: true });
 
 console.log(foo);
-// => { "/home/user/foo/bar.js": { foobar: "arboof" } }
+// => { "/home/user/foo/bar.js": { foobar: "raboof" } }
 ```
 
 #### Prefix Key
@@ -53,8 +55,12 @@ import { importDirectory } from "import-directories";
 const foo = await importDirectory("./foo", { prefixKey: "/foobar-app" });
 
 console.log(foo);
-// => { 
+// => {
 //   "/foobar-app/foo.js": { foo: "bar" }
 //   "/foobar-app/bar.js": { bar: "foo" }
 // }
 ```
+
+## Related
+
+- [express-router-helpers](https://github.com/iswilljr/express-router-helpers) - create your route handlers easier and autoload routes
