@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 
 export async function importDirectory(directoryPath, options = {}) {
   if (typeof directoryPath !== "string") {
-    throw Error(`Expected parameter "directoryPath" to be string, recived ${typeof directoryPath}`);
+    throw TypeError(`Expected parameter "directoryPath" to be string, received ${typeof directoryPath}`);
   }
 
   const { keepPathOnKey = false, prefixKey = "", removeExtensionFile = false } = options;
@@ -12,11 +12,11 @@ export async function importDirectory(directoryPath, options = {}) {
 
   async function processDirectory(dirPath, deep = 0) {
     const stats = await fs.lstat(dirPath);
-    
+
     if (stats.isFile() && deep === 0) {
-      throw Error(`Expected parameter "directoryPath" to be a directory, recived ${directoryPath}`);
+      throw Error(`Expected parameter "directoryPath" to be a directory, received ${directoryPath}`);
     }
-    
+
     if (stats.isDirectory()) {
       const directory = await fs.readdir(dirPath);
       await Promise.all(directory.map((item) => processDirectory(path.join(dirPath, item), deep + 1)));
