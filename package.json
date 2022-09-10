@@ -1,6 +1,6 @@
 {
   "name": "import-directories",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "recursively imports all files in a directory",
   "license": "MIT",
   "author": "iswilljr <iswilljr@gmail.com>",
