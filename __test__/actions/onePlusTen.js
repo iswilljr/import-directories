@@ -1,5 +1,5 @@
 import { sum } from "../operations/sum.js";
 
-export default function onePlusTen() {
+export function onePlusTen() {
   return sum(1, 10);
 }

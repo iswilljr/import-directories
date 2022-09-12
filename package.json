@@ -1,36 +1,27 @@
 {
   "name": "import-directories",
-  "version": "0.0.4",
   "description": "recursively imports all files in a directory",
+  "version": "0.0.4",
   "license": "MIT",
-  "author": "iswilljr <iswilljr@gmail.com>",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "ava && tsd",
-    "prepublishOnly": "yarn test"
-  },
+  "author": "iswilljr <iswilljr@gmail.com>",
   "files": [
     "index.js",
     "index.d.ts"
   ],
+  "types": "./index.d.ts",
   "keywords": [
     "recursively",
     "import",
     "directory",
     "files"
   ],
+  "scripts": {
+    "test": "ava"
+  },
   "devDependencies": {
-    "ava": "4.3.3",
-    "tsd": "0.23.0"
+    "ava": "4.3.3"
   },
-  "types": "./index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iswilljr/import-directories.git"
-  },
-  "bugs": {
-    "url": "https://github.com/iswilljr/import-directories/issues"
-  },
-  "homepage": "https://github.com/iswilljr/import-directories#readme"
+  "repository": "git+https://github.com/iswilljr/import-directories.git"
 }

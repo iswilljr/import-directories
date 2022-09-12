@@ -5,17 +5,18 @@ export interface Options {
    * @example
    * ```js
    * importDirectory("./routes", {keepPathOnKey:false})
-   * directoryPath = "./routes" > "/home/user/routes"
+   * directoryPath = "./routes" > "/home/user/app/routes"
    * results = {
    *  "/index.ts": Module
    * }
    *
    * importDirectory("./routes", {keepPathOnKey:true})
-   * directoryPath = "./routes" > "/home/user/routes"
+   * directoryPath = "./routes" > "/home/user/app/routes"
    * results = {
-   *  "/routes/index.ts": Module
+   *  "/home/user/app/routes/index.ts": Module
    * }
    * ```
+   * @default false
    */
   keepPathOnKey?: boolean;
   /**
@@ -27,9 +28,11 @@ export interface Options {
    * ```
    */
   prefixKey?: string;
-  /** @description whether remove extension file or not */
+  /** 
+   * @description whether remove extension file or not
+   * @default false
+   */
   removeExtensionFile?: boolean;
-  useRequire?: boolean;
 }
 
 export function importDirectory(directoryPath: string, options?: Options): Promise<Record<string, any>>;

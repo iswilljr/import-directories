@@ -1,28 +1,20 @@
 import path from "node:path";
 import fs from "node:fs/promises";
 
-export async function importDirectory(directoryPath, options = {}) {
-  if (typeof directoryPath !== "string") {
-    throw TypeError(`Expected parameter "directoryPath" to be string, received ${typeof directoryPath}`);
-  }
+export async function importDirectory(dirPath, opts = {}) {
+  const { keepPathOnKey = false, prefixKey = "", removeExtensionFile = false } = opts;
 
-  const { keepPathOnKey = false, prefixKey = "", removeExtensionFile = false } = options;
+  const dir = path.resolve(dirPath);
 
-  const _dirPath = path.resolve(directoryPath);
-
-  async function processDirectory(dirPath, deep = 0) {
+  async function processDirectory(dirPath) {
     const stats = await fs.lstat(dirPath);
-
-    if (stats.isFile() && deep === 0) {
-      throw Error(`Expected parameter "directoryPath" to be a directory, received ${directoryPath}`);
-    }
 
     if (stats.isDirectory()) {
       const directory = await fs.readdir(dirPath);
-      await Promise.all(directory.map((item) => processDirectory(path.join(dirPath, item), deep + 1)));
+      await Promise.all(directory.map((item) => processDirectory(path.join(dirPath, item))));
     } else {
       const module = await import(dirPath);
-      const key = path.join(prefixKey, keepPathOnKey ? dirPath : dirPath.replace(_dirPath, ""));
+      const key = path.join(prefixKey, keepPathOnKey ? dirPath : dirPath.replace(dir, ""));
       const moduleKey = removeExtensionFile ? key.replace(/(.+)\.(.+)/, "$1") : key;
 
       results[moduleKey] = module;
@@ -30,7 +22,7 @@ export async function importDirectory(directoryPath, options = {}) {
   }
 
   const results = {};
-  await processDirectory(_dirPath);
+  await processDirectory(dir);
 
   return results;
 }

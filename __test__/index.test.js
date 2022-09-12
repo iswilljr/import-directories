@@ -18,13 +18,13 @@ test("import directory operations", async (t) => {
 });
 
 test("import directory actions", async (t) => {
-  const actions = await importDirectory("./__test__/actions");
+  const actions = await importDirectory("./__test__/actions", { prefixKey: "/actions" });
 
   const {
-    "/eightMinusFour.js": { default: eightMinusFour },
-    "/fiveTimesFive.js": { default: fiveTimesFive },
-    "/onePlusTen.js": { default: onePlusTen },
-    "/tenDivideTwo.js": { default: tenDivideTwo },
+    "/actions/eightMinusFour.js": { eightMinusFour },
+    "/actions/fiveTimesFive.js": { fiveTimesFive },
+    "/actions/onePlusTen.js": { onePlusTen },
+    "/actions/tenDivideTwo.js": { tenDivideTwo },
   } = actions;
 
   t.deepEqual(eightMinusFour(), 4);

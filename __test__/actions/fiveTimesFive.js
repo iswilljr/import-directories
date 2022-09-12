@@ -1,5 +1,5 @@
 import { multiply } from "../operations/multiply.js";
 
-export default function fiveTimesFive() {
+export function fiveTimesFive() {
   return multiply(5, 5);
 }
