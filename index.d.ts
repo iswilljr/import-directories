@@ -18,7 +18,7 @@ export interface Options {
    * ```
    * @default false
    */
-  keepPathOnKey?: boolean;
+  keepPathOnKey?: boolean
   /**
    * @description prefix to all results keys
    * @example
@@ -27,12 +27,15 @@ export interface Options {
    * "/utils/index.js" > "/app/utils/index.js"
    * ```
    */
-  prefixKey?: string;
-  /** 
+  prefixKey?: string
+  /**
    * @description whether remove extension file or not
    * @default false
    */
-  removeExtensionFile?: boolean;
+  removeExtensionFile?: boolean
 }
 
-export function importDirectory(directoryPath: string, options?: Options): Promise<Record<string, any>>;
+export function importDirectory<T extends Record<string, unknown> = Record<string, unknown>>(
+  directoryPath: string,
+  options?: Options
+): Promise<T>

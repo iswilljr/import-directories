@@ -1,5 +1,5 @@
-import { divide } from "../operations/divide.js";
+import {divide} from "../operations/divide.js"
 
 export function tenDivideTwo() {
-  return divide(10, 2);
+  return divide(10, 2)
 }

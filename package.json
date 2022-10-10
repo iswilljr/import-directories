@@ -1,7 +1,7 @@
 {
   "name": "import-directories",
   "description": "recursively imports all files in a directory",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "type": "module",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "index.js",
     "index.d.ts"
   ],
-  "types": "./index.d.ts",
+  "types": "index.d.ts",
   "keywords": [
     "recursively",
     "import",
@@ -21,7 +21,15 @@
     "test": "ava"
   },
   "devDependencies": {
-    "ava": "4.3.3"
+    "ava": "4.3.3",
+    "prettier": "2.7.1"
+  },
+  "prettier": {
+    "useTabs": false,
+    "semi": false,
+    "printWidth": 120,
+    "arrowParens": "avoid",
+    "bracketSpacing": false
   },
   "repository": "git+https://github.com/iswilljr/import-directories.git"
 }

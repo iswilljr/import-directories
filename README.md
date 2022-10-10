@@ -17,44 +17,44 @@ yarn add import-directories
 ### Import Directory
 
 ```js
-import { importDirectory } from "import-directories";
+import {importDirectory} from "import-directories"
 
-const foo = await importDirectory("./foo");
+const foo = await importDirectory("./foo")
 
-console.log(foo);
+console.log(foo)
 // => { "/bar.js": { foobar: 2 } }
 ```
 
 #### Remove the extension file
 
 ```js
-import { importDirectory } from "import-directories";
+import {importDirectory} from "import-directories"
 
-const foo = await importDirectory("./foo", { removeExtensionFile: true });
+const foo = await importDirectory("./foo", {removeExtensionFile: true})
 
-console.log(foo);
+console.log(foo)
 // => { "/bar": { foobar: "Hello World" } }
 ```
 
 #### Keep the absolute file path on the key
 
 ```js
-import { importDirectory } from "import-directories";
+import {importDirectory} from "import-directories"
 
-const foo = await importDirectory("./foo", { keepPathOnKey: true });
+const foo = await importDirectory("./foo", {keepPathOnKey: true})
 
-console.log(foo);
+console.log(foo)
 // => { "/home/user/foo/bar.js": { foobar: "raboof" } }
 ```
 
 #### Prefix Key
 
 ```js
-import { importDirectory } from "import-directories";
+import {importDirectory} from "import-directories"
 
-const foo = await importDirectory("./foo", { prefixKey: "/foobar-app" });
+const foo = await importDirectory("./foo", {prefixKey: "/foobar-app"})
 
-console.log(foo);
+console.log(foo)
 // => {
 //   "/foobar-app/foo.js": { foo: "bar" }
 //   "/foobar-app/bar.js": { bar: "foo" }
