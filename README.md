@@ -60,7 +60,3 @@ console.log(foo);
 //   "/foobar-app/bar.js": { bar: "foo" }
 // }
 ```
-
-## Related
-
-- [express-router-helpers](https://github.com/iswilljr/express-router-helpers) - create your route handlers easier and autoload routes
