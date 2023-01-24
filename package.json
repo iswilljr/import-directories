@@ -1,7 +1,7 @@
 {
   "name": "import-directories",
   "description": "recursively imports all files in a directory",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "type": "module",
   "main": "index.js",
