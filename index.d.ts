@@ -33,9 +33,14 @@ export interface Options {
    * @default false
    */
   removeExtensionFile?: boolean
+  /**
+   * @description valid extenstions to import
+   * @default [".js", ".cjs", ".mjs", ".jsx", ".ts", ".cts", ".mts", ".tsx"]
+   */
+  extensions?: string[]
 }
 
-export function importDirectory<T extends Record<string, unknown> = Record<string, unknown>>(
+export function importDirectory<T extends unknown = unknown>(
   directoryPath: string,
   options?: Options
-): Promise<T>
+): Promise<Record<string, T>>
