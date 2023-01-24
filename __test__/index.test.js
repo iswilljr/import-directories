@@ -91,8 +91,22 @@ test("should import directory with the given extensions", async t => {
   t.deepEqual(getLength(mjsFiles), CONSTANTS.NUMBER_OF_FILES.MJS)
 })
 
-test("should throw error when importing json files", async t => {
-  const getJsonFiles = () => importDirectory(resolve("actions"), {extensions: [".json"]})
+test("should throw type errors", async t => {
+  const assertionTypeError = () => importDirectory(resolve("actions"), {extensions: [".json"]})
+  const extensionTypeError = () => importDirectory(resolve("actions"), {extensions: true})
+  const extensionLengthError = () => importDirectory(resolve("actions"), {extensions: []})
+  const keepPathOnKeyTypeError = () => importDirectory(resolve("actions"), {keepPathOnKey: "true"})
+  const prefixKeyTypeError = () => importDirectory(resolve("actions"), {prefixKey: true})
+  const removeExtensionFileTypeError = () => importDirectory(resolve("actions"), {removeExtensionFile: "true"})
 
-  await t.throwsAsync(getJsonFiles)
+  const promises = [
+    assertionTypeError,
+    extensionLengthError,
+    extensionTypeError,
+    keepPathOnKeyTypeError,
+    prefixKeyTypeError,
+    removeExtensionFileTypeError,
+  ]
+
+  await Promise.all(promises.map(promise => t.throwsAsync(promise, {instanceOf: TypeError})))
 })

@@ -40,7 +40,9 @@ export interface Options {
   extensions?: string[]
 }
 
-export function importDirectory<T extends unknown = unknown>(
+export declare function importDirectory<T extends unknown = unknown>(
   directoryPath: string,
   options?: Options
 ): Promise<Record<string, T>>
+
+export declare const DEFAULT_EXTENSIONS: readonly [".js", ".cjs", ".mjs", ".jsx", ".ts", ".cts", ".mts", ".tsx"]

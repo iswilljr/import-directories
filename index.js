@@ -1,12 +1,28 @@
 import path from "node:path"
 import fs from "node:fs/promises"
 
-export async function importDirectory(dirPath, opts = {}) {
-  const {keepPathOnKey = false, prefixKey = "", removeExtensionFile = false, extensions} = opts
+const types = {
+  keepPathOnKey: "boolean",
+  prefixKey: "string",
+  removeExtensionFile: "boolean",
+}
 
-  const _extensions = Array.isArray(extensions)
-    ? extensions
-    : [".js", ".cjs", ".mjs", ".jsx", ".ts", ".cts", ".mts", ".tsx"]
+export const DEFAULT_EXTENSIONS = Object.freeze([".js", ".cjs", ".mjs", ".jsx", ".ts", ".cts", ".mts", ".tsx"])
+
+export async function importDirectory(dirPath, opts = {}) {
+  const {keepPathOnKey = false, prefixKey = "", removeExtensionFile = false, extensions = DEFAULT_EXTENSIONS} = opts
+
+  for (const key in types) {
+    if (key in opts && opts[key] !== undefined && typeof opts[key] !== types[key]) {
+      throw TypeError(`Expected option "${key}" to be type "${types[key]}"`)
+    }
+  }
+
+  if (!Array.isArray(extensions)) {
+    throw TypeError(`Expected option "extentions" to be an array`)
+  }
+
+  if (!extensions.length) throw TypeError('Expected option "extentions" to have at least 1 item')
 
   const dir = path.resolve(dirPath)
 
@@ -19,7 +35,7 @@ export async function importDirectory(dirPath, opts = {}) {
       return
     }
 
-    const hasValidExtension = _extensions.some(extension => dirPath.endsWith(extension))
+    const hasValidExtension = extensions.some(extension => dirPath.endsWith(extension))
 
     if (!hasValidExtension) return
 
